@@ -7,9 +7,10 @@ With poor grammar, I refer to the little school-drop-outs that say 'your' instea
 
 This was made by XxBiancaXx#4356.
 
-# Links
+# Check me out!
 https://www.github.com/XxB1a/ddos-discord-bot
 https://www.instagram.com/moron420
+XxBiancaXx#4356
 
 # Important note!!
 This bot will only work if you read thru the code and change whatever is needed. Tokens, API_DATA, MAXTIME, etc. are examples of things that MUST be changed!
