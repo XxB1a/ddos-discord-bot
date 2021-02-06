@@ -113,7 +113,7 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
         elif method is None:
             await ctx.send('You need a method!')
 
-        elif method.upper() not in l4methods or method not in l7methods:
+        elif method.upper() not in l4methods or method.upper() not in l7methods:
             await ctx.send('Invalid method!!')
 
         # There was no victim
