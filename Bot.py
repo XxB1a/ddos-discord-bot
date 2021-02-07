@@ -85,6 +85,36 @@ async def del_buyer(ctx, buyer : int = None):
     else:
         buyers.remove(buyer)
         await ctx.send('Removed him/her!!')
+        
+@bot.command()
+async def add_admin(ctx, admin : int = None):
+    if ctx.author.id not in owners:
+        await ctx.send(f'Sorry, {ctx.author}, but you aren\'t an owner!')
+
+    elif admin in admins:
+        await ctx.send(f'{admin} is already an admin!')
+
+    elif admin is None:
+        await ctx.send('Please give an admin!!')
+
+    else:
+        admins.append(admin)
+        await ctx.send('Added him/her!!')
+
+@bot.command()
+async def del_admin(ctx, admin : int = None):
+    if ctx.author.id not in owners:
+        await ctx.send(f'Sorry, {ctx.author}, but you aren\'t an owner!')
+
+    elif admin not in admins:
+        await ctx.send(f'{admin} is not an admin')
+
+    elif admin is None:
+        await ctx.send('Please give an admin!!')
+
+    else:
+        admins.remove(admin)
+        await ctx.send('Removed him/her!!')
 
 #ctx, method/help, victim (ip/host), port (exmpl 80), time
 @bot.command()
