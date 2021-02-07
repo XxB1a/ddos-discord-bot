@@ -123,10 +123,7 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
         await ctx.send('Sorry, but you need to buy a spot!')
 
     else:
-        if method is None: 
-            method == 'HELP'
-            
-        if method.upper() == 'HELP':
+        if method is None or method.upper() == 'HELP':
             l4methodstr = ''
             l7methodstr = ''
 
