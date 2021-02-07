@@ -163,10 +163,6 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
         elif time is None:
             await ctx.send('You need a time!')
 
-        # The time was bigger then allowed (maxtime)
-        elif int(time) > max_time:
-            await ctx.send(f'Time {time} is bigger then the max time {maxtime}!!!')
-
         # Everything is correct!
         else:
             for i in api_data:
