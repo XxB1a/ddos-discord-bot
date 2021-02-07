@@ -123,6 +123,9 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
         await ctx.send('Sorry, but you need to buy a spot!')
 
     else:
+        if method is None: 
+            method == 'HELP'
+            
         if method.upper() == 'HELP':
             l4methodstr = ''
             l7methodstr = ''
@@ -161,7 +164,7 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
             await ctx.send('You need a time!')
 
         # The time was bigger then allowed (maxtime)
-        elif int(time) > maxtime:
+        elif int(time) > max_time:
             await ctx.send(f'Time {time} is bigger then the max time {maxtime}!!!')
 
         # Everything is correct!
